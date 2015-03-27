@@ -1,0 +1,9 @@
+generiere L
+x = head(L)
+A x e V: i_x = Grad(x)
+While x != NIL
+	h_alt = h(x)
+	LEERE(x)
+	if h_alt < h(x)
+		x in front of L
+	x = nachfolger von x in L

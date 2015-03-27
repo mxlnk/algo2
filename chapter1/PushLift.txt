@@ -1,0 +1,12 @@
+Pusch(x,y) bis zu kapazität des überschusses aus x nach y nur wenn,
+ü(x) > 0
+x e V\{q,s}
+h(x) - h(y) = 1
+
+
+Lifte(x)
+h(x) = 1 + min{h(y) | (x,y) e E_f} nur wenn,
+x e V\{q,s}
+ü(x) > 0
+(3) h(x) <= min {h(y) | (x,y) e E_f} 
+zu (3): keine tiefergelegenen nachbarknoten im residualgraph

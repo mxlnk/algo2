@@ -1,0 +1,4 @@
+bei leere: was ist i_x initial?  ---- antwort: wird vom algorithmus initialisiert, pro knoten gibt es einen "zeiger"/index, der initial auf grad(x gesetzt wird)
+
+
+verstehe in an die spitze zeile 8 und 9

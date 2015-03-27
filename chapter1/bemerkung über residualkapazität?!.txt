@@ -1,0 +1,2 @@
+Residualkapazität k_f = k - f
+k_f(x,y) + k_f(y,x) = k(x,y) + k(y,x)

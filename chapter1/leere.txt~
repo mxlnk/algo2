@@ -1,7 +1,0 @@
-solange ü(x) > 0
-	if i_x > 0
-		y = n_x(i_x)
-		if (x,y) puschbar, pushe es
-		else i_x --
-	else Lifte(x)
-		i_x = Grad(x)

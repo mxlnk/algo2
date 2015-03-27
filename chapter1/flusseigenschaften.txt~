@@ -1,4 +1,0 @@
-Funktion f: V^2 -> R
-(1) f <= k
-(2) A x,y e V: f(x,y) = -f(y,x)
-(3) A x e V\{q,s}: 0 = Sum(f(x,V))

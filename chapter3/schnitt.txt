@@ -1,0 +1,5 @@
+While |V| >= 3
+	wähle zufällig Kante (x,y) e E
+	entferne alle (x,y) aus E
+	verschmelze x mit y
+	gib S = E aus

@@ -1,0 +1,5 @@
+E[Sum(X_i)] = Sum(E[X_i])
+Pr[E_1 | E_2] = Pr[E_1 ^ E_2] / Pr[E_2] bedingte wahrscheinlichkeit für eintreten von Ereignis 1 unter Voraussetzung E_2
+Wenn: Pr[E_1 | E_2] = Pr[E_1] oder Pr[E_1] * Pr[E_2] = Pr[E_1 ^ E_2] heißen E_1 und E_2 unabhängig
+
+Folgerung: Pr[Cut(E_i)] = Pr[E_1 | E_2 ^ ... ^ E_n] * ... * Pr[E_n-1 | E_n] * Pr[E_n]

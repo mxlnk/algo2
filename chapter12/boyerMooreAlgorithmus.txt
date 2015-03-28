@@ -1,0 +1,14 @@
+Boyer-Moore-Algorithmus
+
+*Erweitert "naive Suche" umd Vorkommens- und Suffix-Heuristik*
+
+{wie in naive Suche bis Zeile 7}
+8 sonst 
+9	v <- v(t_(i+j))
+10	falls v < j
+11		i <- i + max{j-v, sigma(j)}
+12	sonst
+13		i <- i + max{m-v+1, sigma(j)}
+
+Bem.:
+Suffix-Heuristik verhindert worst-case-Laufzeit in Teta(m*n).

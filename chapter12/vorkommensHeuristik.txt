@@ -1,0 +1,22 @@
+Vorkommens-Heuristik:
+
+Verbessere "naive Suche" indem im letzten Schritt i nicht um 1 erhöht wird.
+
+Vorkommensfunktion:
+v :	A -> {0, ..., m}
+	a -> v(a),
+wobei 
+	v(a) := min {k| a not in s_(k+1) ... s_m und (a = s_k v k = 0)}
+
+Bem.:
+Kann vorberechnet werden in O(|A| + m).
+
+Neuer Algorithmus:
+Sei t_(i+j) != s_j und t_(i+j+1) ... t_(i+m) = s_(j+1) ... s_m.
+
+Dann ist v := v(t_(i+j)) != j und
+- falls v < j, kann i um j-v erhöht werden
+- falls v > j, kann i um m-v+1 erhöht werden
+
+Bem.:
+Für kleines m und großes Alphabet A nun Laufzeit in O(n/m).

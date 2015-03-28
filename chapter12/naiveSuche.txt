@@ -1,0 +1,15 @@
+Eingabe:
+	t = t_1 ... t_n
+	s = s_1 ... s_m {Suchtext}
+Ausgabe:
+	kleinstes i mit t_(i+1) ... t_(i+m) = s
+----------
+1 i <- 0
+2 Solange i <= n - m
+	{vgl. s mit t_(i+1) ... t_(i+m)}
+3	j <- m
+4	Solange j > 0 und s_j = t_(i + j)
+5		j <- j - 1
+6	Falls j = 0
+7		gib i aus; stop
+8	sonst i <- i + 1

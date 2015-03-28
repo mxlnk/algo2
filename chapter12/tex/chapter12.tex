@@ -1,0 +1,149 @@
+\documentclass[8pt, DIV15, twocolumn]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{float} 
+\usepackage{color}
+\usepackage{bm}
+\usepackage{listings}
+
+\usepackage{graphicx}
+
+\usepackage{ae}
+\subject{\vspace{-1\baselineskip}}
+
+\title{Chapter 12 - Textsuche}
+\date{}
+
+\publishers{\vspace{-.5\baselineskip}}
+
+\begin{document}
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\topmargin}{0pt}
+
+ 
+\maketitle
+
+\thispagestyle{empty}
+
+
+\section*{Naive Suche}
+
+\begin{lstlisting}[mathescape=true]
+Eingabe:
+	t = $t_1 ... t_n$
+	s = $s_1 ... s_m$ // Suchtext
+Ausgabe:
+	kleinstes $i$ mit $t_{i+1} ... t_{i+m}$ = s
+
+i <- 0
+Solange i $\leq$ n - m
+	// vgl. s mit $t_{i+1} ... t_{i+m}$
+	j <- m
+	Solange j > 0 und $s_j = t_{i+j}$
+		j <- j - 1
+	Falls j = 0
+		gib $i$ aus; stop
+	sonst i <- i + 1 
+\end{lstlisting}
+
+\section*{Vorkommens-Heuristik}
+
+Vorkommensfunktion:
+
+\begin{equation*}
+\begin{aligned}
+	v : A &\rightarrow {0, ..., m} \\
+		a &\mapsto v(a), \\
+	v(a) &:= min \{\;k| a \not \in s_{k+1} ... s_m \;und\; \left( a = s_k \vee k = 0 \right) \}
+\end{aligned}
+\end{equation*}
+
+\subsection*{Bem.}
+Kann vorberechnet werden in $O(|A| + m)$.
+
+\subsection*{Änderungen in "`Naive Suche"'}
+Sei $t_{i+j} \neq s_j$ und $t_{i+j+1} ... t_{i+m} = s_{j+1} ... s_m$.
+
+Dann ist $v := v(t_{i+j}) \neq j$ und
+
+\begin{itemize}
+	\item falls $v < j$, kann $i$ um $j-v$ erhöht werden
+	\item falls $v > j$, kann $i$ um $m-v+1$ erhöht werden
+\end{itemize}
+
+\subsection*{Bem.}
+Für kleines $m$ und großes Alphabet $A$ nun Laufzeit $O(\frac{n}{m})$
+
+
+\section*{Suffixfunktion}
+
+\subsection*{Def.}
+Ein Präfix eines Wortes $w$, das zugleich ein Suffix von $w$ ist, heißt \emph{Präsuffix}. $geps(w)$ ist das größte echte Präsuffix von $w$.
+
+$w_j := s_{j+i} ... s_m$.
+
+\begin{equation*}
+\gamma \left( j \right) := |geps \left( w_j \right)|
+\end{equation*}
+
+Suffixfunkion $\sigma$ wird dargestellt:
+
+\begin{equation*}
+\sigma \left( j \right) = min \left( \{k \in \{1, ..., j\}| \; \gamma \left(j-k \right) = m-j\} \cup \{m - \gamma \left(0 \right)\} \right)
+\end{equation*}
+
+\subsection*{Algorithmus für $\sigma$ (Laufzeit $O\left(m\right)$)}
+
+\begin{lstlisting}[mathescape=true]
+Eingabe:
+	$\gamma$(0 ... m)
+Ausgabe:
+	$\sigma$(1 ... m)
+
+For j = 1, ..., m
+	$\sigma$(j) $\leftarrow$ m - $gamma$(0)
+For i = 0, ..., m-1
+	k $\leftarrow$ m - $\gamma$(i) - i
+	j $\leftarrow$ m - $\gamma$(i)
+	// Es gilt jetzt $\gamma$(j-k) = m - j
+	falls $\sigma$(j) > k
+		dann $\sigma$(j) $\leftarrow$ k
+\end{lstlisting}
+
+\subsection*{Algorithmus für $\gamma$ (Laufzeit $O\left(m\right)$)}
+
+\begin{lstlisting}[mathescape=true]
+Eingabe:
+	$s_1 ... s_m$
+Ausgabe:
+	$\gamma$(0 ... m-1)
+
+$\gamma$(m-1) $\leftarrow$ 0
+For i = m-1, ..., 1
+	j $\leftarrow$ m - $\gamma$(i)
+	Solange $s_i \neq s_j$ und m $\neq$ j
+		j $\leftarrow$ m - $\gamma$(j)
+	falls $s_i = s_j$
+	dann $\gamma$(i-1) $\leftarrow$ m-j+1
+	sonst $\gamma$(i-1) $\leftarrow$ 0
+\end{lstlisting}
+
+\section*{Boyer-Moore-Algorithmus}
+
+\begin{lstlisting}[mathescape=true]
+// wie in "Naiver Suche", letzte Zeile
+// durch folgendes ersetzt
+v $\leftarrow$ v($t_{i+j}$)
+falls v < j
+	i $\leftarrow$ i + max{j-v, $\sigma$(j)}
+sonst
+	i $\leftarrow$ i + max{m-v+1, $\sigma$(j)}
+\end{lstlisting}
+
+\end{document}

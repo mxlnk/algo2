@@ -1,0 +1,44 @@
+Suffixfunktion:
+
+Def.:
+Ein Präfix eines Wortes w, das zugleich ein Suffix von w ist, nennen wir Präsuffix. 
+geps(w) ist das größte Echte Präsuffix von w.
+w_j := s_(j+i) ... s_m
+
+gamma(j) := |geps(w_j)|.
+
+Suffixfunktion sigma wird so dargestellt:
+sigma(j) = min({k in {1, ..., j} | gamma(j-k) = m-j} vereinigt {m - gamma(0)}).
+
+Algorithmus für sigma: (Laufzeit O(m))
+
+Eingabe:
+	gamma(0 ... m)
+Ausgabe:
+	sigma(1 ... m)
+-----
+Für j = 1, ..., m
+	sigma(j) <- m-gamma(0)
+Für i = 0, ..., m-1
+	k <- m - gamma(i) - i
+	j <- m - gamma(i)
+	{Es gilt jetzt gamma(j-k) = m - j}
+	Falls sigma(j) > k 
+		dann sigma(j) <- k
+
+
+
+Algorithmus für gamma: (Laufzeit O(m))
+Eingabe:
+	s_1 ... s_m
+Ausgabe:
+	gamma(0 ... m-1)
+-----
+gamma(m-1) <- 0
+Für i = m-1, ..., 1
+	j <- m-gamma(i)
+	Solange s_i != s_j und m != j
+		j <- m-gamma(j)
+	Falls s_i = s_j
+	dann gamma(i-1) <- m-j+1
+	sonst gamma(i-1) <- 0

@@ -1,0 +1,6 @@
+While R e L
+	gehe vorwärts, bis zur wand;
+	gehe nach links entlang der wand bis !e L oder drehwinkel == 0;
+
+(drehwinkel immer im vergleich zur ausgangsposition, immer aufsummieren => mehr als 360° möglich)
+wenn drehwinkel == 0 bleibt R nicht stehen sondern läuft geradeaus weiter, auch wenn er kontakt zur wand verliert

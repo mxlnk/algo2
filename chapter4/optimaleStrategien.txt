@@ -1,0 +1,12 @@
+-Zeile i ist optimale Strategie von A, falls sie A's Mindestgewinn: min_j(m_ij) maximiert
+-Spalte j ist optimale Strategie von B, falls sie B's Maximalverlust: max_i(m_ij) minimiert
+-Wählen also beide optimale Strategien gilt:
+	max_i(min_j(m_ij)) <= Gewinn(A) <= min_j(max_i(m_ij))
+
+
+Bei gemischten Strategien A verfolt p und B verfolgt q:
+-E[Gewinn(A)] = p^t*M*q
+-Strategie von A optimal, wenn min_q(p^t*M*q) maximal
+-Strategie von B optimal, wenn max_p(p^t*M*q) minimal
+-Wählen beide optimal: 
+	max_p(min_q(p^t*M*q)) <= E[Gewinn(A)] <= min_q(max_p(p^t*M*q))

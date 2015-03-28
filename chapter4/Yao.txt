@@ -1,0 +1,3 @@
+Für alle p und q:
+min_j p^t*M*e_j <= K_v <= max_i e_i^t*M*q
+damit kann die worst-case Laufzeit aller stochastischen Algorithmen durch Laufzeit des schnellsten deterministischen nach unten abgeschätzt werden

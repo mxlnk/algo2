@@ -1,0 +1,3 @@
+(y,z) = Paar der Kinder von x in zufälliger Reihenfolge
+if (WERT(y) == 1) return 0
+else return 0 NOR WERT(z)

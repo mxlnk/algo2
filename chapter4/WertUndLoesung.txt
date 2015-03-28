@@ -1,0 +1,2 @@
+falls W := min_j(max_i(m_ij)) = max_i(min_j(m_ij))
+heißt W wert des spiels und das dazugehörige (i,j) Lösung

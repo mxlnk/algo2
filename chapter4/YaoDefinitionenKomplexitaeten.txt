@@ -1,0 +1,12 @@
+m_ij ist Laufzeit von A_j(E_i)
+max_i(m_ij) ist worst-case Laufzeit von A_j
+min_j(max_i(m_ij)) ist deterministische komplexität von P bzgl A =: K_d
+min_j(m_ij) ist Laufzeit des schnellsten Algos für E_i
+max_i(min_j(m_ij)) ist stochastische Komplexität von P bzgl A =: K_s
+
+K_s <= K_d
+
+gemischte Strategien:
+	E[Laufzeit] = p^t*M*q
+	max_p(min_q(p^t*M*q)) heißt Verteilungskomplexität =: K_v
+	K_s <= K_v <= K_d (mit Loomi und Neumann)

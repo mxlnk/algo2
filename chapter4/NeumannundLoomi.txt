@@ -1,0 +1,6 @@
+W := max_p(min_q(p^t*M*q)) = min_q(max_p(p^t*M*q)) gilt immer
+und ein paar optimaler Strategien (p,q) heißt Lösung
+
+Für festes p wird p^t*M*q minimal, wenn q = e_j <- d.h. wähle minimalen Eintrag aus p^t*M
+
+damit Loomis Satz: W := max_p(min_j(p^t*M*e_j)) = min_q(max_i(e_i^t*M*q))

@@ -3,3 +3,5 @@ While r != z
 	if (r != z)
 		umlaufe Polygon und suche Punkt auf Polygon mit minimalem Abstand zu z;
 		gehe zu diesem punkt;
+
+

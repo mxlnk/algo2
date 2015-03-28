@@ -1,0 +1,8 @@
+i = 1
+until Tür gefunden
+	gehe i 'Meter' der Wand entlang 
+	und wieder zurück
+(1) i = i + 1 BZW (2) i = 2 * i
+
+mit (1) mit keinem faktor kompetitiv
+mit (2) 9-kompetitiv, besser als 9-kompetitiv geht nicht

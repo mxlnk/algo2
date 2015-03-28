@@ -1,0 +1,3 @@
+Problem P, Eingabemenge E, Algorithmus A
+k_opt: E -> N und k_A: E -> N Größe der optimalen und der mit A berechneten Lösung
+falls k_A <= a + c*k_opt für alle Eingaben e E, heißt A c-kompetitiv

@@ -1,0 +1,5 @@
+Polygonzug P hat m Ecken p_1,..,p_m
+P heißt geschlossen, falls p_1 = p_m
+P heißt einfach, falls kein Punkt von P in 2 Kanten liegt, mit Ausnahme der Ecken, die Endpunkte von bis zu 2 Kanten sein dürfen
+
+ein planares Gebiet heißt (einfaches) Polygon, falls sein Rand ein (einfacher) geschlossener Polygonzug ist

@@ -1,0 +1,132 @@
+\documentclass[8pt, DIV15, twocolumn]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{float} 
+\usepackage{color}
+\usepackage{bm}
+\usepackage{listings}
+
+\usepackage{graphicx}
+
+\usepackage{ae}
+\subject{\vspace{-1\baselineskip}}
+
+\title{Chapter 9 - De Casteljau-Algorithmus}
+\date{}
+
+\publishers{\vspace{-.5\baselineskip}}
+
+\begin{document}
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\topmargin}{0pt}
+
+ 
+\maketitle
+
+\thispagestyle{empty}
+
+\section*{Schreibweise}
+
+$C$ ist De-Casteljau, $C^*$ Unterteilungsoperator mit Stufe $k$.
+
+\begin{equation*}
+\begin{aligned}
+C \left( B_0^0, t \right) &= B_0^1 B_1^1 \\
+C^* \left( B_0^0, k \right) &:= B_0^k ... B_{2^k - 1}^k 
+\end{aligned}
+\end{equation*}
+
+\section*{Algorithmus}
+
+\begin{lstlisting}[mathescape=true]
+Eingabe:
+	$\mathbf{b}_0^0 ... \mathbf{b}_n^0 \subset \mathbb{R}^d$
+	$t \in \mathbb{R}$
+Ausgabe:
+	$\mathbf{b}_0^0 ... \mathbf{b}_0^n \; \mathbf{b}_0^n ... \mathbf{b}_n^0 \subset \mathbb{R}^d$
+
+For k = 1, ..., n
+	For i = 0, ..., n - k
+		$\mathbf{b}_i^k \leftarrow \mathbf{b}_i^{k-1} \left( 1-t \right) + \mathbf{b}_{i+1}^{k-1} t$
+\end{lstlisting}
+
+
+\section*{Kanonische Parametrisierung}
+Unterteilung eines Polygons in $P^k := \mathbf{P}_0^k ... \mathbf{P}_{2^k - 1}^k$ mit 
+
+\begin{equation*}
+\begin{aligned}
+P_j^k &:= \mathbf{p}_0^{k,j} ... p_n^{k,j} \\
+\mathbf{p}_i^{k,j} &:= 
+\begin{bmatrix}
+\beta_i^{k,j} \\
+\mathbf{b}_i^{k,j}
+\end{bmatrix} \\
+\beta_i^{k,j} &:= \frac{j + \frac{i}{n}}{2^k}
+\end{aligned}
+\end{equation*}
+
+Zu $P^k$ it die stückweise lineare Funktion $L_k \left( \mathbf{b}_0 ... \mathbf{b}_n \right)$
+
+\section*{Differenzenpolygon}
+
+\begin{equation*}
+\begin{aligned}
+\Delta B &:= \Delta \mathbf{b}_0 ... \mathbf{b}_n \\
+&:= \left(\Delta \mathbf{b}_0 \right) ... \left( \Delta \mathbf{b}_{n-1} \right) \\
+&:= \left( \mathbf{b}_1 - \mathbf{b}_0 \right) ... \left( \mathbf{b}_n - \mathbf{b}_{n-1} \right)
+\end{aligned}
+\end{equation*}
+
+Zusammenhang von Differenzen mit normalem Polygon
+
+\begin{equation*}
+\begin{aligned}
+B_0 B_1 &:= C^* \left(B, 1 \right) \\
+\Delta B_0 \Delta B_1 &= \frac{1}{2} C^* \left(\Delta B, 1\right) \\
+B_0 ... B_{2^k} &:= C^* \left(B, k \right) \\
+\Delta B_0 ... \Delta B_{2^k} &= 2^{-k} C^* \left(\Delta B, k \right)
+\end{aligned}
+\end{equation*}
+
+Abhängigkeit von $\Delta B_0$ und $\Delta B_1$ bzgl. C: (Übung 9.2)
+
+\begin{equation*}
+\begin{aligned}
+&tL = \Delta B_0 \;\;\;
+\left( 1 - t \right) R = \Delta B_1 \\
+&\Rightarrow \frac{\Delta B_0}{t} \frac{\Delta B_1}{\left( 1 - t \right)} = C\left(\Delta B, t\right)
+\end{aligned}
+\end{equation*}
+
+\section*{Ableitung unterteilter Polygone}
+
+\begin{equation*}
+\begin{aligned}
+b \left( t \right) &:= L_k \left( B \right) \\
+\beta_i^{k,j} &:= \frac{jn + i}{n 2^k} \\
+b_i^{k,j} &:= b^k \left( \beta_i^{k,j} \right) \\
+\dot{b}^k \left( t \right) &= \frac{\Delta b_i^{k,j}}{\Delta \beta_i^{k,j}} = n 2^k \Delta b_i^{k,j}
+\end{aligned}
+\end{equation*}
+
+\section*{Konvergenz}
+Satz: Zu jedem Polygon $B = b_0 ... b_n$ gibt es ein Polygon $L_\infty \left( B \right)$ vom Grad $\leq n$, sodass
+
+\begin{equation*}
+\sup\limits_{[0,1]} |L_k \left( B \right) - L_\infty \left( B \right)| \in O \left( 2^{-k} \right)
+\end{equation*}
+
+Folgerung:
+
+\begin{equation*}
+\frac{d}{dt} L_\infty \left( B \right) = n L_\infty \left( \Delta B \right)
+\end{equation*}
+
+\end{document}

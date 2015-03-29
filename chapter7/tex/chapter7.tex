@@ -107,4 +107,70 @@ solange ein $c_s$ > 0
 	B $\leftarrow$ AUSTAUSCH(B, r, s)
 \end{lstlisting}
 
+Aufwand im worst-case $\Omega \left( m^{\frac{n}{2}} \right)$. In Praxis meist in $O \left( m^2 n \right)$.
+
+
+\section*{Berechnung der Normalform}
+Gegeben ein lineares Programm
+
+\begin{itemize}
+	\item finde zulässigen Punkt
+	\item mache Punkt zum Ursprung
+	\item führe n Tauschs $x_r$ mit $y_r$ durch
+\end{itemize}
+
+Damit Ursprung beim Tausch von $x_r$ mit $y_r$ gültig bleibt muss für alle $i > r$ gelten:
+
+\begin{equation*}
+a_i - \frac{a_{ir} a_r}{a_{rr}} \geq 0
+\end{equation*}
+
+\section*{Duale lineare Programme}
+Das lineare Programm 
+
+\begin{equation*}
+\begin{aligned}
+\mathbf{y} &\geq 0 \\
+B^t \mathbf{y} + \mathbf{c} &\leq 0 \\
+\mathbf{b}^t \mathbf{y} + c &= min!
+\end{aligned}
+\end{equation*}
+
+ist dual zu
+
+\begin{equation*}
+\begin{aligned}
+\mathbf{x} &\geq 0 \\
+B \mathbf{x} + \mathbf{b} &\leq 0 \\
+\mathbf{c}^t \mathbf{y} + c &= min!
+\end{aligned}
+\end{equation*}
+
+Ersteres kann transformiert werden zu
+
+\begin{equation*}
+\begin{aligned}
+\mathbf{y} &\geq 0 \\
+-B^t \mathbf{y} - \mathbf{c} &\geq 0 \\
+-\mathbf{b}^t \mathbf{y} - c &= max!
+\end{aligned}
+\end{equation*}
+
+\section*{Ausgleichen mit Maximumsnorm}
+$A\mathbf{x} = \mathbf{a}$ überbestimmtes LGS. $\forall \mathbf{x}$ ist das Residuum
+
+\begin{equation*}
+\mathbf{r} := \left(r_1 ... r_n \right)^t := A \mathbf{x} - \mathbf{a} \neq 0
+\end{equation*}
+
+Wir definieren $x_0 := \frac{1}{r}$ und $\bar{\mathbf{x}} := \mathbf{x} x_0$. Führt zu linearem Programm:
+
+\begin{equation*}
+\begin{aligned}
+-A\bar{\mathbf{x}} + \mathbf{a} x_0 + \mathbf{e} &\geq 0 \\
+A\bar{\mathbf{x}} - \mathbf{a} x_0 + \mathbf{e} &\geq 0 \\
+x_0 &= max!
+\end{aligned}
+\end{equation*}
+
 \end{document}

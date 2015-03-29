@@ -1,0 +1,78 @@
+\documentclass[]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+
+\subject{\vspace{-1\baselineskip}}
+
+
+
+\begin{document}
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\topmargin}{0pt}
+
+\thispagestyle{empty}
+
+\section{Gradientenverfahren}
+Ausgehend vom Anfangspunkt  $ {\bf x_{0}}  =  [x_{1},..,x_{n}] $, berechne Gradient der Kostenfunktion an dieser Stelle: $ \bigtriangledown c({\bf x_{0}}) = [ \partial c / \partial x_{1} , ... , \partial c / \partial x_{n} ] $. Der Nachfolger ist dann, $ {\bf x_{i+1}} = {\bf x_{i}} + h * \bigtriangledown c({\bf x_{i}}) $, wobei $ h > 0 $, falls maximiert werden soll und $ h < 0 $, wenn minimiert wird.
+
+\section{Suchverfahren}
+Suchbaum/Graph
+
+\section{stochastische verfahren}
+\subsection{Allgemein}
+startzustand \textbf{q}, einen nachbar \textbf{p} zufällig wählen, schritt von ausgang zum neuen nachbar akzeptabel?, falls nein neuer nachbar, sonst von akzeptiertem zustand weiter, bis zurfieden
+
+\subsection{simuliertes tempern}
+Hier: Maximalzahl betrachteter nachbarn insgesamt (Bedingung fuer Terminieren), Folge sinkender temperaturen $ t_{1}, t_{2}, ... $, Akzeptanzbedingung:\\
+$ c({\bf p}) > c({\bf q}) \ \ OR \ \ exp(\dfrac{c({\bf p}) - c({\bf q})}{t_{i}}) > Zuffalszahl \in [0,1] $, nächste Temperatur immer wenn akzeptiert wurde.
+
+\subsection{Schwellwert-Algorithmus}
+Akzeptanzbedingung: $ c({\bf p}) > c({\bf q}) - \sigma $, wobei $ \sigma $ immer weiter abgesenkt wird.
+
+\subsection{Sintflut-Maximierung}
+Akzeptanzbedingung: $ c({\bf p}) > F $, mit steigender unterer grenze F.
+
+\subsection{Rekordjagd-Algorithmus}
+Akzeptanzbedingung: $ c({\bf p}) \geq Rekord - \sigma $, bisher bester gesehener Wert, darf nicht um sinkende Toleranz unterschritten werden.
+
+\section{Evolutionäre Algorithmen}
+\subsection{Allgemein}
+Population aus Individuen mit Merkmalsvektor \textbf{q} und Fitness c(\textbf{q}). Außerdem gibt es noch einen globalen Streuungsvektor $ {\bf \sigma} $, aus dem normal oder geometrisch verteilt mutiert wird. Individuen koennen sich fortpflanzen, bei mehreren Eltern Kreuzung, sonst Klon. Populationsgräße wird einigermaßen konstant gehalten, d.h. es werden immer wieder Loesungen verworfen.
+
+\subsection{Plus-Evolutionsstrategie}
+Erzeuge $ \lambda $ Nachkommen, nur die $ \mu $ fittesten Individuen aus den $ \mu $ Eltern und $ \lambda $ Nachkommen ueberleben.\\
+Eltern werden pro Kind zufällig aus Population gewählt.
+
+\subsection{Komma-ES}
+Wie bei plus, allerdings sterben alle Eltern garantiert und nur $ \mu $ fittesten Kinder ueberleben.
+
+\subsection{Klonen vs. Mehrere Eltern}
+Beim Klonen mutiere einfach mithilfe von $ \sigma $ (s.o.).\\
+Bei mehreren Eltern:
+\begin{itemize}
+\item Mischen: Es wird fuer jedes Merkmal ($ q_{i} $) zufaellig bestimmt, von welchem Elternteil dieses Merkmal uebernommen wird.
+\item Mitteln: Es wird fuer jedes Merkmal der Mittelwert ueber die Werte der Eltern gebildet.
+\end{itemize}
+
+\section{Genetische Algorithmen}
+Binäre Merkmalsvektoren, nur Nachkommen ueberleben.\\
+Individuum klont sich mit Wahrscheinlichkeit $ W({\bf q}) = c({\bf q}) / \sum_{{\bf p} \in Pop} c({\bf p}) $. $ \mu $ Eltern erzeugen immer $ \mu $ Klon-Nachkommen.\\
+Wähle unter den $ \mu $ Klonen p\% Individuen, die gekreuzt werden. Wähle daraus zufällige Paare. Aus a = (a1,...,an) und b = (b1,...,bn) entstehen c = (a1,...,aj,bj+1,...,bn) und d = (b1,...,bj,aj+1,...,an).\\
+Dann kippe jedes Bit des Mermalsvektors mit sehr geringer Wahrscheinlichkeit.\\
+Zusammengehörende Mermalsbits sollten möglichst nahe beisammen stehen, damit sie bei der Kreuzung nicht zerbrechen.
+
+\section{Partikel-Schwarm-Optimierung}
+Partikel jeweils mit Position $ p_{i}(t) $, Fitness $ f_{i}(p_{i}) $, Geschwindigkeit $ v_{i}(t) = p_{i}(t) - p_{i}(t-1) $.\\
+Algorithmus:\\
+Initiale Position und Geschwindigkeit zufällig. Dann sei $ q_{i} $ die bisher beste Position eines Partikels, q die global bisher beste Position.\\
+Dann nächste Werte:\\
+$ v_{i} = v_{i} * \omega + (q_{i} - p_{i}) * c_{1} * r_{1} + (q - p_{i}) * c_{2} * r_{2} $ r jeweils aus [0,1], c und $ \omega $ konstant.\\
+Die Konstanten können per Superschwarm optimiert werden.
+
+\section{Ameisen-Systeme}
+Formeln abschreiben %TODO
+
+\end{document}

@@ -1,0 +1,109 @@
+\documentclass[8pt, DIV15, twocolumn]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{float} 
+\usepackage{color}
+\usepackage{bm}
+\usepackage{listings}
+
+\usepackage{graphicx}
+
+\usepackage{ae}
+\subject{\vspace{-1\baselineskip}}
+
+\title{Chapter 10 - Lane-Riesenfeld-Algorithmus}
+\date{}
+
+\publishers{\vspace{-.5\baselineskip}}
+
+\begin{document}
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\topmargin}{0pt}
+
+ 
+\maketitle
+
+\thispagestyle{empty}
+
+\section*{Allgemein}
+Biinfinite Kontrollpolygone: $\mathbf{c}_\mathbb{Z} := \left( \mathbf{c}_i \right)_{i \in \mathbb{Z}} = \left( ... \mathbf{c}_{-1} \mathbf{c}_0 \mathbf{c}_1 ... \right)$
+
+\section*{Algorithmus}
+
+\begin{lstlisting}[mathescape=true]
+Eingabe:
+	$\mathbf{c}_\mathbb{Z}^0$ ein Polygon $\subset \mathbb{R}^d$
+	$n \in \mathbb{N}_0$ der Grad
+Ausgabe:
+	$\mathbf{c}_\mathbb{Z}^m \subset \mathbb{R}^d$
+
+For k = 1, ..., m
+	For i $\in \mathbb{Z}$   //verdoppele
+		$\mathbf{d}_{2i}^0 \leftarrow \mathbf{d}_{2i+1}^0 \leftarrow \mathbf{c}_i^{k-1}$
+	For j = 1, ..., n
+		For i $\in \mathbb{Z}$   //mittele
+			$\mathbf{d}_i^j \leftarrow \left( \mathbf{d}_{i-1}^{j-1} + \mathbf{d}_i^{j-1} \right) \frac{1}{2}$
+	For i $\in \mathbb{Z}$   //bennen um
+		$\mathbf{c}_i^k \leftarrow \mathbf{d}_i^n$
+\end{lstlisting}
+
+Bem.: $\mathbf{d}_0^j$ ist immer der Punkt $\mathbf{d}_i^j$ mit dem kleinsten $i$, der von $\mathbf{c}_0^0$ beeinflusst wird.
+
+\section*{Unterteilungsmatrizen}
+
+\begin{equation*}
+\begin{aligned}
+D = 
+\begin{bmatrix}
+\ddots & & & \\
+& 1 & & \\
+& 1 & & \\ 
+& & 1 & \\
+& & 1 & \\
+& & & \ddots
+\end{bmatrix} \; \;
+M = \frac{1}{2}
+\begin{bmatrix}
+\ddots & & & & & \\
+& 1 & 1 & & & \\
+& & 1 & 1 & & \\
+& & & 1 & 1 & \\
+& & & & & \ddots
+\end{bmatrix} \\ 
+U_n^m \mathbf{c} = \left( U_n \right)^m \mathbf{c} = \left( M^n D \right)^m \mathbf{c}
+\end{aligned}
+\end{equation*}
+
+Allgemein enthält $U_n$ in den Spalten die Einträge $\alpha_i$, jeweils um zwei Zeilen versetzt:
+
+\begin{equation*}
+\alpha_i = \begin{cases}
+        \frac{1}{2^n} \binom{n+1}{i}, & i = 0, ..., n+1\\
+        0, & sonst
+        \end{cases}
+\end{equation*}
+
+Unterteilungsgleichung:
+
+\begin{equation*}
+b_i = \sum\limits_{k\in \mathbb{Z}} \alpha_{i-2k} c_k, \; i\in \mathbb{Z}
+\end{equation*}
+
+
+\section*{Das Symbol}
+Bsp. $\alpha$ eines stationären Unterteilungsalgorithmus:
+
+\begin{equation*}
+\begin{aligned}
+\alpha \left( z \right) &:= \sum\limits_{j\in\mathbb{Z}} \alpha_j z^j \\
+\alpha_n \left( z \right) &:= \frac{1}{2^n} \sum\limits_{i=0}^{n+1} \binom{n+1}{i} z^i = \frac{1}{2^n} \left( 1 + z \right)^{n+1}
+\end{aligned}
+\end{equation*}
+
+\end{document}

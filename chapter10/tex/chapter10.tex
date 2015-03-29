@@ -106,4 +106,27 @@ Bsp. $\alpha$ eines stationären Unterteilungsalgorithmus:
 \end{aligned}
 \end{equation*}
 
+\section*{Differenzenschema}
+
+\begin{equation*}
+\begin{aligned}
+\text{Rückwärtsdifferenzen: }\nabla \mathbf{c} &:= \left( \nabla c_i \right)_{i \in \mathbb{Z}} \\
+\nabla c_i &:= c_i - c_{i-1} \\
+\text{Symbol: } v \left( z \right) &:= 1 - z \\
+\nabla \mathbf{c} \left(z\right) &= v \left(z\right) c \left(z\right) \\
+\text{Differenzenpolygone: } b_\nabla \left( z\right) &= \left(1-z\right)b\left(z\right) \\
+&= \left(1-z\right) \alpha \left(z\right) \frac{c_\nabla \left(z^2\right)}{\left(1-z^2\right)} \\
+&= \frac{\alpha\left(z\right)}{1+z} c_\nabla \left(z^2\right)
+\end{aligned}
+\end{equation*}
+
+Bem.: Das Differenzenschema zu $\alpha\left(z\right)$ existiert nur, wenn gilt:
+$\alpha\left(-1\right) = \sum\limits_{i\in\mathbb{Z}} \alpha_{2i} - \sum\limits_{i\in\mathbb{Z}} \alpha_{2i + 1} = 0$
+
+Bem.: Es muss $\sum\limits_{i\in\mathbb{Z}} \alpha_{2i} = \sum\limits_{i\in\mathbb{Z}} \alpha_{2i+1} = 1$ gelten, damit die unterteilten Polygone gegen eine Kurve konvergieren.
+
+\section*{Uniforme Parametrisierung}
+Brauchen wir das? Ich würde es eher weglassen. Verstehn wir ja eh nicht.
+\section*{Konvergenz}
+Same thing here.
 \end{document}

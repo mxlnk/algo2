@@ -1,0 +1,72 @@
+\documentclass[8pt, DIV15, twocolumn]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{float} 
+\usepackage{color}
+\usepackage{bm}
+\usepackage{listings}
+
+\usepackage{graphicx}
+
+\usepackage{ae}
+\subject{\vspace{-1\baselineskip}}
+
+\title{Chapter 11 - Unterteilungsalgorithmen für Flächen}
+\date{}
+
+\publishers{\vspace{-.5\baselineskip}}
+
+\begin{document}
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\topmargin}{0pt}
+
+ 
+\maketitle
+
+\thispagestyle{empty}
+
+\section*{Allgemein}
+Regelmäßiges biinfinites Kontrollnetz $C$ und das unterteilte Netz $B$ mit den Unterteilungsmatrizen $U$ und $V$:
+
+\begin{equation*}
+\begin{aligned}
+C &:= [\mathbf{c}_{ij}]_{i,j\in \mathbb{Z}} = [\mathbf{c_i}]_{\mathbf{i}\in\mathbb{Z}^2} =: \mathbf{c}_{\mathbb{Z}^2} \\
+B &:= \mathbf{b}_{\mathbb{Z}^2} := UCV^t \\
+&\left(U,V\right) \text{ heißt Tempus}
+\end{aligned}
+\end{equation*}
+
+Bem.: Wenn $U, V$ konvergente Kurvenunterteilungsalgorithmen, dann konvergiert $U^k C \left(V^t\right)^k$ gegen eine Fläche.
+
+\section*{Symbole}
+
+\begin{equation*}
+\begin{aligned}
+C = \mathbf{c}_{\mathbb{Z}^2} &\Rightarrow \mathbf{c} \left(\mathbf{x}\right) := \mathbf{c} \left(x,y\right) := \sum\limits_{i\in\mathbb{Z}} \sum\limits_{j\in\mathbb{Z}} \mathbf{c}_{ij} x^i y^j := \sum\limits_{\mathbf{i}\in\mathbb{Z}^2} \mathbf{c_i x^i} \\
+B := UCV^t &\Rightarrow \mathbf{b} \left(x,y\right) := \alpha \left(x\right) \mathbf{c} \left(x^2,y^2\right) \beta \left(y\right) \\
+\left(U,V\right) &\Rightarrow \gamma \left(x,y\right) := \alpha\left(x\right) \beta\left(y\right) \text{ (Symbol des Tempus)}
+\end{aligned}
+\end{equation*}
+
+Unterteilungsgleichung: $\mathbf{b}\left(\mathbf{x}\right) = \gamma \left(\mathbf{x}\right) \mathbf{c} \left(\mathbf{x}^2\right)$ bzw. komponentenweise: $\mathbf{b_i} = \sum\limits_{\mathbf{j}\in\mathbb{Z}^2} \gamma_{\mathbf{i}-2\mathbf{j}} \mathbf{c_j}$
+
+\section*{Masken}
+
+Wenn $\Gamma := \gamma_{\mathbb{Z}^2}$ biinfinite Matrix. Also
+
+\begin{equation*}
+\begin{aligned}
+&\gamma\left(x,y\right) := [...x^{-1} x^0 x^1 ...] \Gamma [... y^{-1} y^0 y^1 ...]^t \\
+&\Gamma_{\mathbf{i}} := [\gamma_{\mathbf{i}-2\mathbf{j}}]_{\mathbf{j}\in\mathbb{Z}^2} \text{heißen Masken für } \mathbf{i} = (0,0), (1,0), (0,1), (1,1)
+\end{aligned} 
+\end{equation*}
+
+
+
+\end{document}

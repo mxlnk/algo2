@@ -1,3 +1,3 @@
-D = (P\Q) u (Q\P)
+Sym DIff D = (P\Q) u (Q\P)
 besteht aus Wegen, deren Kanten alternierend in P und Q liegen
 mit P eine Paarung und Q eine maximale Paarung. Zyklen haben daher gerade Länge

@@ -52,7 +52,7 @@ Drehwinkel immer im Vergleich zur Ausgangsposition. Immer Aufsummieren $\Rightar
 &\text{Polygonzug: } P: p_1,...,p_m, p_i \text{ Ecken} \\
 &P \text{ geschlossen} \Leftrightarrow p_1 = p_m \\
 &P \text{ einfach} \Leftrightarrow \text{Kanten schneiden sich nicht} \\
-&\text{planares Gebiet} \hat{=} \text{einfaches Polygon} \Leftrightarrow \text{Rand einfacher Polygonzug}
+&\text{planares Gebiet} \hat{=} \text{einfaches Polygon} \Leftrightarrow \text{Rand einf. Polygonzug}
 \end{aligned}
 \end{equation*}
 
@@ -88,11 +88,39 @@ Bis Tuer gefunden
 \end{lstlisting}
 
 
-\begin{figure}[ht]
-	\centering
-  \includegraphics[width=0.3\textwidth]{9-kompetiv-beweis.png}
-  \caption{Bsp. Kompetitivitätsbeweis}
-\end{figure}
+Bsp.: Competitivitätsbeweis
 
+\begin{equation*}
+\begin{aligned}
+\text{Weglänge } &\leq 2 \sum\limits_{i=0}^{n+1} 2^i + 2^{n+\delta} \\
+&\leq 2^{n+3+\delta} + 2^{n+\delta} \\
+&\leq 9 * 2^{n+\delta}
+\end{aligned}
+\end{equation*}
+
+\section*{Sternsuche}
+
+\begin{lstlisting}[mathescape=true]
+Sternsuche
+$\forall i \in \mathbb{N}_0: f_i \leftarrow \left(\frac{m}{m-1}\right)^i$
+$i \leftarrow$ 0
+Bis $\mathbf{z}$ gefunden
+	gehe $f_i$ Einheiten auf $H_{i\,\text{mod}\,m}$
+	entlang und zurueck
+	$i \leftarrow i$ + 1
+\end{lstlisting}
+
+\begin{equation*}
+\begin{aligned}
+\text{Kompetitivität: } c &:= 2m\left(\frac{m}{m-1}\right)^{m-1} + 1 \\
+&= 2m \left(1 + \frac{1}{m-1}\right)^{m-1} + 1 < 2me + 1
+\end{aligned}
+\end{equation*}
+
+\section*{Suche in Polygonen}
+
+Bem.: nicht kompetitiv, aber $\exists$ Strategien für die gilt $\frac{l}{d} \in O\left(\#\text{ Ecken von }P\right)$.
+
+Es gibt nur einen kürzesten Weg von $\mathbf{s}$ nach $\mathbf{z}$, dessen Ecken außer $\mathbf{s}$ und $\mathbf{z}$ nur Ecken von $P$ sind.
 
 \end{document}

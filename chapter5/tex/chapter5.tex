@@ -1,0 +1,102 @@
+\documentclass[8pt, DIV15, twocolumn]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{float} 
+\usepackage{color}
+\usepackage{bm}
+\usepackage{listings}
+
+\usepackage{graphicx}
+
+\usepackage{ae}
+\subject{\vspace{-1\baselineskip}}
+
+\title{Chapter 5 - Geometrische Algorithmen}
+\date{}
+
+\publishers{\vspace{-.5\baselineskip}}
+
+\begin{document}
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\topmargin}{0pt}
+
+ 
+\maketitle
+
+\thispagestyle{empty}
+
+\section*{BRZ}
+
+\begin{lstlisting}[mathescape=true]
+Eingabe:
+	Ein Polyeder $P \subset \mathbb{R}^3$
+	orientierte, planare, disjunkte 
+	Polygone $P_1,..., P_n \subset\mathbb{R}^3$
+Ausgabe:
+	Ein RZB fuer $P_1,...,P_n$
+
+	k $\leftarrow$ 1
+	for i = 1,...,n
+	$Q_k \leftarrow P_i \cap P$
+	falls $Q_k \neq \emptyset$
+		k $\leftarrow$ k + 1
+l $\leftarrow$ 1
+falls $\exists j: Q_j$ zerlegt $P$
+	l $\leftarrow$ j
+Wurzel $leftarrow Q_l$
+	$\vdots$ // rekursiver Aufruf mit Haelften
+\end{lstlisting}
+
+\section*{Konvexe Hüllen}
+
+\begin{equation*}
+\begin{aligned}
+&M \subset A \text{ heißt konvex }:\Leftrightarrow \\
+&\forall \mathbf{a}, \mathbf{b} \in M \forall t \in [0,1]: \\
+&\mathbf{x} := \mathbf{a} \left(1-t\right) + \mathbf{b} t \in M
+\end{aligned}
+\end{equation*}
+
+Def.: $[M] := $ konv $M$ = konv Hülle $M$
+
+\section*{Dualität}
+
+\begin{equation*}
+\begin{aligned}
+\mathbf{u}^t \mathbf{x} &= 1, \; \mathbf{u} \in \mathbb{R}^n \\
+\mathbf{u}* &:= \{\mathbf{x}\in A| \mathbf{u}^t\mathbf{x} = 1\} \text{ heißt Hyperebene}
+\end{aligned}
+\end{equation*}
+
+$\mathbf{u}\in A$ wird der zu $\mathbf{u}*$ \emph{duale Punkt} genannt. $\mathbf{x}*$ die zum Punkt $\mathbf{x}$ \emph{duale HE}.
+
+$A* := \{\mathbf{x}*| \mathbf{x} \in A\}$ ist der \emph{Dualraum} zu $A$.
+$\mathbf{u}^t\mathbf{x} \leq 1, \; \mathbf{u} \neq 0$ bildet den \emph{Halbraum} $\mathbf{u}^\leq$.
+
+Satz.: $[[M]] := \text{ closure } [M]$
+
+\begin{equation*}
+\begin{aligned}
+M_p &:= \{\mathbf{u}| M \subset \mathbf{u}^\leq\} \text{ Polarmenge von }M \\
+M_{pp} &= \{\mathbf{x}| M_p \subset \mathbf{x}^\leq\} = [[M]]
+\end{aligned}
+\end{equation*}
+
+\section*{Bez. zw. Knoten, Kanten, Facetten}
+
+Für ein Polyeder mit $v$ Knoten, $e$ Kanten und $f$ Seiten gibt \emph{Eulers Formel}
+
+\begin{equation*}
+\begin{aligned}
+&v - e + f = 2 \\
+\text{Außerdem } f &= 2v - k - 4 = O\left(v\right) \text{wenn Polyeder trianguliert}
+\end{aligned}
+\end{equation*}
+
+\end{document}
